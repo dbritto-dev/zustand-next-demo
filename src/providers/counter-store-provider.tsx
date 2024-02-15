@@ -1,8 +1,7 @@
 "use client";
 
 import { type ReactNode, createContext, useRef, useContext } from "react";
-import { type StoreApi } from "zustand";
-import { useStoreWithEqualityFn } from "zustand/traditional";
+import { type StoreApi, useStore } from "zustand";
 
 import {
   type CounterStore,
@@ -44,5 +43,5 @@ export const useCounterStore = <T = CounterStore,>(
     throw new Error(`useCounterStore must be use within CounterStoreProvider`);
   }
 
-  return useStoreWithEqualityFn(counterStoreContext, selector);
+  return useStore(counterStoreContext, selector);
 };
